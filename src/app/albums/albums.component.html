@@ -1,0 +1,6 @@
+<h2>Listado de Albums</h2>
+<ul>
+  <li *ngFor="let item of albumsList">
+    <a [href]="item.url">{{item.title}}</a>
+  </li>
+</ul>

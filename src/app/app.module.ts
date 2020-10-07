@@ -4,17 +4,23 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SongsComponent } from './songs/songs.component';
+import { AlbumsComponent } from './albums/albums.component';
+import { ArtistsComponent } from './artists/artists.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SongsComponent
+    SongsComponent,
+    AlbumsComponent,
+    ArtistsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent, SongsComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
