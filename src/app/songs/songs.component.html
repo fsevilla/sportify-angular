@@ -1,7 +1,4 @@
 <h1>{{nombre}} works!</h1>
 <a routerLink="/albums" [queryParams]="{artista: artistId}">Regresar a Albums</a>
-<ul>
-  <li *ngFor="let item of songsList2">
-    <a [href]="item.url">{{item.title}}</a>
-  </li>
-</ul>
+<br><br>
+<app-data-list></app-data-list>

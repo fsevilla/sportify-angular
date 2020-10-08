@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { SongsComponent } from './songs/songs.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DataListComponent } from './common/data-list/data-list.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SongsComponent,
     AlbumsComponent,
     ArtistsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DataListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

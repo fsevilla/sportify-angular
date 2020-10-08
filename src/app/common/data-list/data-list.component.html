@@ -1,0 +1,20 @@
+<div class="searchbox">
+  <input *ngIf="automatico" type="text" [(ngModel)]="filter" placeholder="Buscar..." (keyup)="filtrar()"><br>
+
+  <form (submit)="filtrar()" *ngIf="!automatico">
+    <input name="textobuscar" type="text" [(ngModel)]="filter"  placeholder="Buscar...">
+    <!-- <button>Buscar</button> -->
+  </form>
+
+  <!-- <select name="categoria" [(ngModel)]="categoria">
+    <option value="">Selecciona una categoria </option>
+    <option value="1">Pop</option>
+    <option value="2">Rock</option>
+  </select> -->
+</div>
+
+<ul>
+  <li *ngFor="let item of fileredDataList">
+    <a [href]="item.url">{{item.title}}</a>
+  </li>
+</ul>

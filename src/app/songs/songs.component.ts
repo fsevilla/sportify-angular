@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { element } from 'protractor';
 
 import { SongService } from './song.service';
 
@@ -11,8 +12,10 @@ import { SongService } from './song.service';
 export class SongsComponent {
 
   songsList2:any[] = [];
+
   albumId:number;
   artistId:number;
+
 
   nombre:string = 'Songs';
 
@@ -30,6 +33,13 @@ export class SongsComponent {
       this.artistId = +qp.artista;
     });
 
+    this._activatedRoute.params.subscribe(params => {
+      if(!params.album) return;
+      
+      this.albumId = +params.album;
+      this.artistId = +params.artista;
+    });
+
     this.showSongs();
   }
 
@@ -38,5 +48,7 @@ export class SongsComponent {
       this.songsList2 = datos;
     });
   }
+
+
 
 }

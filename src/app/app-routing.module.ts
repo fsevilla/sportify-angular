@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'artists', component:  ArtistsComponent },
   { path: 'albums', component: AlbumsComponent },
   { path: 'songs', component: SongsComponent },
+  { path: 'artistas/:artista/albums/:album/songs', component: SongsComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

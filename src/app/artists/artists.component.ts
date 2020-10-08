@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ArtistService } from './artist.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class ArtistsComponent implements OnInit {
   eventos:any[] = [];
   error:boolean = false;
 
-  constructor(private _artistService:ArtistService) { }
+  constructor(private _artistService:ArtistService, private _router:Router) { }
 
   ngOnInit(): void {
     this._artistService.getArtists().then(datos => {
@@ -22,6 +24,13 @@ export class ArtistsComponent implements OnInit {
     }).catch(err => {
       console.log('Error: ', err);
       this.error = true;
+    });
+  }
+
+  goToAlbums(artistId) {
+    console.log('Hice click en el link', artistId);
+    this._router.navigate(['/albums'], {
+      queryParams: { artista:artistId }
     });
   }
 
