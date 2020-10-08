@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
 
-  constructor() { }
+  constructor(private _httpClient:HttpClient) { }
 
-  getArtists():Promise<any> {
+  getArtistsOld():Promise<any> {
     return new Promise((resolve, reject) => {
       const artistas = [
         {
@@ -31,9 +34,12 @@ export class ArtistService {
           url: '#'
         }
       ];
-      setTimeout(function(){
         resolve(artistas);
-      }, 1000);
     });
+  }
+
+  getArtists():Promise<any> {
+    const url = environment.apiUrl + 'users';
+    return this._httpClient.get(url).toPromise();
   }
 }

@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
 
-  constructor() { }
+  constructor(private _httpClient:HttpClient) { }
 
-  getSongs():Promise<any> {
+  getSongsOld():Promise<any> {
     return new Promise((resolve, reject) => {
       const canciones = [
         {
@@ -31,5 +34,10 @@ export class SongService {
         resolve(canciones);
       }, 3000);
     });
+  }
+
+  getSongs(albumId:number):Promise<any> {
+    const url = environment.apiUrl + 'photos?albumId='+albumId;
+    return this._httpClient.get(url).toPromise();
   }
 }

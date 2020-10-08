@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { SongService } from './song.service';
 
 @Component({
@@ -9,6 +11,8 @@ import { SongService } from './song.service';
 export class SongsComponent {
 
   songsList2:any[] = [];
+  albumId:number;
+  artistId:number;
 
   nombre:string = 'Songs';
 
@@ -19,14 +23,18 @@ export class SongsComponent {
     'Las mañanitas'
   ]
 
-  constructor(private _songService:SongService) {
-    console.log('Songs class constructed....', _songService);
+  constructor(private _songService:SongService, private _activatedRoute:ActivatedRoute) {
+    
+    this._activatedRoute.queryParams.subscribe(qp => {
+      this.albumId = +qp.album;
+      this.artistId = +qp.artista;
+    });
 
     this.showSongs();
   }
 
   showSongs() {
-    this._songService.getSongs().then((datos) => {
+    this._songService.getSongs(this.albumId).then((datos) => {
       this.songsList2 = datos;
     });
   }

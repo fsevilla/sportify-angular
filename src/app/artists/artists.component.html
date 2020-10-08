@@ -1,6 +1,7 @@
 <h2>Listado de Artistas</h2>
-<ul>
+<ul *ngIf="error==false">
   <li *ngFor="let item of artistsList">
-    <a href="albums?artista={{item.id}}">{{item.name}}</a>
+    <a routerLink="/albums" [queryParams]="{artista: item.id}">{{item.name}}</a>
   </li>
 </ul>
+<p *ngIf="error">Ocurrio un error. Intenta mas tarde.</p>
