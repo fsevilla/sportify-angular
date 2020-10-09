@@ -10,6 +10,8 @@ import { AlbumsComponent } from './albums/albums.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DataListComponent } from './common/data-list/data-list.component';
+import { LoginComponent } from './login/login.component';
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DataListComponent } from './common/data-list/data-list.component';
     AlbumsComponent,
     ArtistsComponent,
     NotFoundComponent,
-    DataListComponent
+    DataListComponent,
+    LoginComponent,
+    ConfirmAccountComponent
   ],
   imports: [
     BrowserModule,

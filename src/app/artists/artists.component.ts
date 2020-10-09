@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ArtistService } from './artist.service';
+import { SpotifyService } from './../services/spotify.service';
 
 @Component({
   selector: 'app-artists',
@@ -15,11 +16,12 @@ export class ArtistsComponent implements OnInit {
   eventos:any[] = [];
   error:boolean = false;
 
-  constructor(private _artistService:ArtistService, private _router:Router) { }
+  constructor(private _artistService:ArtistService, private _router:Router, private _spotifyService:SpotifyService) { }
 
   ngOnInit(): void {
-    this._artistService.getArtists().then(datos => {
-      this.artistsList = datos.map(item => {
+    this._spotifyService.getArtists('muse').then(datos => {
+      console.log('Respuesta: ', datos);
+      this.artistsList = datos.artists.items.map(item => {
         item.queryParams = {artista: item.id};
         return item;
       });
