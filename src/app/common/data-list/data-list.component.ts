@@ -1,36 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-data-list',
   templateUrl: './data-list.component.html',
   styleUrls: ['./data-list.component.scss']
 })
-export class DataListComponent implements OnInit {
+export class DataListComponent implements OnInit, OnChanges {
 
   automatico:boolean = true;
   filter:string = '';
 
-  dataList:any[] = [
-    {url: '#', title: 'sample'}
-  ];
+  @Input() dataList:any[] = [];
+  @Input() url:string;
 
-  fileredDataList:any[] = [];
+  filteredDataList:any[] = [];
+
 
   constructor() { }
 
   ngOnInit(): void {
-    this.fileredDataList = this.dataList;
+  }
+
+  ngOnChanges(changes) {
+    if(changes.dataList) {
+      this.filteredDataList = this.dataList;
+    }
   }
 
   filtrar() {
-    console.log('Vamos a buscar: ', this.filter);
     if(this.filter == '') {
-      this.fileredDataList = this.dataList;
+      this.filteredDataList = this.dataList;
       return;
     }; 
 
-    this.fileredDataList = this.dataList.filter(elemento => {
-      return elemento.title.includes(this.filter);
+    this.filteredDataList = this.dataList.filter(elemento => {
+      const prop = elemento.title ? 'title' : 'name';
+      return elemento[prop].toLowerCase().includes(this.filter.toLowerCase());
     });
   }
 

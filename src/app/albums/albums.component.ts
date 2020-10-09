@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, IterableDiffers, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AlbumService } from './album.service';
@@ -22,7 +22,10 @@ export class AlbumsComponent implements OnInit {
     });
 
     this._albumService.getAlbums(this.artistId).then(datos => {
-      this.albumsList = datos;
+      this.albumsList = datos.map(item => {
+        item.queryParams = { album:item.id, artista:this.artistId };
+        return item;
+      });
     });
   }
 

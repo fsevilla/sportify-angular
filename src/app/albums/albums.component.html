@@ -1,7 +1,3 @@
 <h2>Listado de Albums</h2>
 <a routerLink="/artists">Regresar</a>
-<ul>
-  <li *ngFor="let item of albumsList">
-    <a routerLink="/songs" [queryParams]="{artista: artistId, album: item.id}">{{item.title}}</a>
-  </li>
-</ul>
+<app-data-list url="songs" [dataList]="albumsList"></app-data-list>

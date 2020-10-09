@@ -46,6 +46,7 @@ export class SongsComponent {
   showSongs() {
     this._songService.getSongs(this.albumId).then((datos) => {
       this.songsList2 = datos;
+      console.log('Songs: ', this.songsList2);
     });
   }
 

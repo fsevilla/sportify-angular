@@ -1,8 +1,2 @@
 <h2>Listado de Artistas</h2>
-<ul *ngIf="error==false">
-  <li *ngFor="let item of artistsList">
-    <a routerLink="/albums" [queryParams]="{artista: item.id}">{{item.name}}</a>
-    <!-- <a (click)="goToAlbums(item.id)">{{item.name}}</a> -->
-  </li>
-</ul>
-<p *ngIf="error">Ocurrio un error. Intenta mas tarde.</p>
+<app-data-list url="albums" [dataList]="artistsList"></app-data-list>

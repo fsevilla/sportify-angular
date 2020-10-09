@@ -1,4 +1,4 @@
 <h1>{{nombre}} works!</h1>
 <a routerLink="/albums" [queryParams]="{artista: artistId}">Regresar a Albums</a>
 <br><br>
-<app-data-list></app-data-list>
+<app-data-list [dataList]="songsList2"></app-data-list>

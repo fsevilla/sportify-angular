@@ -19,7 +19,10 @@ export class ArtistsComponent implements OnInit {
 
   ngOnInit(): void {
     this._artistService.getArtists().then(datos => {
-      this.artistsList = datos;
+      this.artistsList = datos.map(item => {
+        item.queryParams = {artista: item.id};
+        return item;
+      });
       this.error = false;
     }).catch(err => {
       console.log('Error: ', err);
